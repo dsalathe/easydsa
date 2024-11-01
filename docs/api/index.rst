@@ -35,12 +35,12 @@ Basic Usage
 
     # Create a min-heap
     pq = PriorityQueue()
-    
+
     # Add items
     pq.push(3)
     pq.push(1)
     pq.push(4)
-    
+
     # Get items in priority order
     while pq:
         print(pq.pop())  # prints: 1, 3, 4

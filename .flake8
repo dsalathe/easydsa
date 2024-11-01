@@ -1,0 +1,32 @@
+[flake8]
+max-line-length = 98
+extend-ignore = E203
+exclude = .git,__pycache__,build,dist,*.egg-info,.tox,.coverage,coverage.xml
+per-file-ignores =
+    # Ignore missing docstrings in tests
+    tests/*:D100,D101,D102,D103,D104
+    # Ignore unused imports in __init__.py
+    */__init__.py:F401
+    # Ignore line length in docs
+    docs/conf.py:E501
+
+# File: mypy.ini
+[mypy]
+python_version = 3.8
+warn_return_any = True
+warn_unused_configs = True
+disallow_untyped_defs = True
+disallow_incomplete_defs = True
+check_untyped_defs = True
+disallow_untyped_decorators = True
+no_implicit_optional = True
+warn_redundant_casts = True
+warn_unused_ignores = True
+warn_no_return = True
+warn_unreachable = True
+
+[mypy-tests.*]
+disallow_untyped_defs = False
+
+[mypy-docs.*]
+ignore_errors = True
