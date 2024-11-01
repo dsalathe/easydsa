@@ -11,7 +11,7 @@ setup(
     description="A simple and intuitive implementation of common data structures and algorithms",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/easydsa", #TODO
+    url="https://github.com/dsalathe/easydsa",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
