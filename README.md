@@ -85,7 +85,7 @@ with PriorityQueue() as pq:
 # Add multiple items at once
 pq = PriorityQueue()
 pq.extend([1, 2, 3])  # items as their own priorities
-pq.extend([("task1", 1), ("task2", 2)])  # (item, priority) pairs
+pq.extend([("task1", 1), ("task2", 2)])  # For (item, priority) pairs
 
 # Create queue from items
 pq = PriorityQueue.from_items([1, 2, 3])
