@@ -1,12 +1,13 @@
 # SimpleDSA
 
-A simple and intuitive implementation of common data structures and algorithms in Python.
+[![PyPI version](https://badge.fury.io/py/simpledsa.svg)](https://badge.fury.io/py/simpledsa)
+[![Python Package](https://github.com/dsalathe/simpledsa/actions/workflows/python-package.yml/badge.svg)](https://github.com/dsalathe/simpledsa/actions/workflows/python-package.yml)
+[![codecov](https://codecov.io/gh/dsalathe/simpledsa/branch/main/graph/badge.svg)](https://codecov.io/gh/dsalathe/simpledsa)
+[![Documentation Status](https://readthedocs.org/projects/simpledsa/badge/?version=latest)](https://simpledsa.readthedocs.io/en/latest/?badge=latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Versions](https://img.shields.io/pypi/pyversions/simpledsa.svg)](https://pypi.org/project/simpledsa/)
 
-## Features
-
-- Flexible Priority Queue implementation supporting both min-heap and max-heap behavior
-- Support for items with implicit or explicit priorities
-- More features coming soon!
+A simple and intuitive implementation of data structures and algorithms in Python.
 
 ## Installation
 
@@ -148,3 +149,49 @@ task_pq.extend(tasks)
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Development
+
+### Setting up development environment
+
+```bash
+# Clone the repository
+git clone https://github.com/dsalathe/simpledsa.git
+cd simpledsa
+
+# Install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies
+poetry install
+
+# Run tests
+poetry run pytest
+
+# Format code
+poetry run black .
+poetry run isort .
+
+# Type checking
+poetry run mypy simpledsa
+```
+
+### Building documentation
+
+```bash
+cd docs
+poetry run make html
+```
+
+The documentation will be available in `docs/_build/html`.
+
+### Publishing a new version
+
+1. Update version in pyproject.toml
+2. Create and push a new tag:
+```bash
+git tag v0.1.1
+git push origin v0.1.1
+```
+
+The GitHub Action will automatically build and publish to PyPI.
