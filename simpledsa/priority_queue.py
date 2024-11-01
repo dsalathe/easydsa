@@ -9,7 +9,6 @@ from typing import (
     Optional,
     Tuple,
     TypeVar,
-    Union,
     cast,
 )
 
@@ -49,20 +48,37 @@ class PriorityQueue(Generic[T, P]):
         heapq.heappush(self._heap, (transformed_priority, self._index, item))
         self._index += 1
 
-    # TODO might use extend_with_priorities instead
-    def extend(self, items: Union[List[T], List[Tuple[T, P]]]) -> None:
+    def extend(self, items: List[T]) -> None:
         """
-        Add multiple items to the queue.
+        Add multiple items to the queue, using each item as its own priority.
 
         Args:
-            items: Either a list of items (using self-priority) or
-                  a list of (item, priority) tuples
+            items: Sequence of items to add
+
+        Examples:
+            >>> pq = PriorityQueue()
+            >>> pq.extend([3, 1, 4])
+            >>> list(pq.pop_all())
+            [1, 3, 4]
         """
         for item in items:
-            if isinstance(item, tuple) and len(item) == 2:
-                self.push(item[0], item[1])
-            else:
-                self.push(cast(T, item))
+            self.push(item)
+
+    def extend_with_priority(self, items: List[Tuple[T, P]]) -> None:
+        """
+        Add multiple items with explicit priorities to the queue.
+
+        Args:
+            items: Sequence of (item, priority) tuples
+
+        Examples:
+            >>> pq = PriorityQueue()
+            >>> pq.extend_with_priority([("task1", 2), ("task2", 1)])
+            >>> list(pq.pop_all())
+            ['task2', 'task1']
+        """
+        for item, priority in items:
+            self.push(item, priority)
 
     def pop(self) -> T:
         """
@@ -151,7 +167,7 @@ class PriorityQueue(Generic[T, P]):
         return pq
 
     @classmethod
-    def from_pairs(
+    def from_items_with_priority(
         cls, pairs: List[Tuple[T, P]], key_func: Callable = lambda x: x
     ) -> "PriorityQueue[T, P]":
         """
@@ -165,7 +181,7 @@ class PriorityQueue(Generic[T, P]):
             New PriorityQueue containing the items
         """
         pq = cls(key_func)
-        pq.extend(pairs)
+        pq.extend_with_priority(pairs)
         return pq
 
     @classmethod

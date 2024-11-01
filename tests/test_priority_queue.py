@@ -31,6 +31,34 @@ class TestPriorityQueue(unittest.TestCase):
         for expected in expected_order:
             self.assertEqual(self.pq.pop(), expected)
 
+    def test_extend(self):
+        """Test extending with items using their own priority."""
+        pq = PriorityQueue()
+        items = [3, 1, 4]
+        pq.extend(items)
+        assert list(pq.pop_all()) == [1, 3, 4]
+
+    def test_extend_with_priority(self):
+        """Test extending with item-priority pairs."""
+        pq = PriorityQueue()
+        items = [("task1", 2), ("task2", 1), ("task3", 3)]
+        pq.extend_with_priority(items)
+        assert list(pq.pop_all()) == ["task2", "task1", "task3"]
+
+    def test_extend_empty_sequence(self):
+        """Test extending with empty sequences."""
+        pq = PriorityQueue()
+        pq.extend([])
+        pq.extend_with_priority([])
+        assert len(pq) == 0
+
+    def test_extend_with_priority_max_heap(self):
+        """Test extending with priorities in a max heap."""
+        pq = PriorityQueue(priority_functions.reverse)
+        items = [("task1", 2), ("task2", 1), ("task3", 3)]
+        pq.extend_with_priority(items)
+        assert list(pq.pop_all()) == ["task3", "task1", "task2"]
+
     def test_max_heap(self):
         items = [3, 1, 4, 1, 5]
         for item in items:
@@ -67,15 +95,6 @@ class TestPriorityQueue(unittest.TestCase):
         with self.assertRaises(IndexError):
             self.pq.peek()
 
-    def test_extend(self):
-        # Test extending with items
-        self.pq.extend([3, 1, 4])
-        self.assertEqual([x for x in self.pq.pop_all()], [1, 3, 4])
-
-        # Test extending with pairs
-        self.pq.extend([("task1", 2), ("task2", 1), ("task3", 3)])
-        self.assertEqual([x for x in self.pq.pop_all()], ["task2", "task1", "task3"])
-
     def test_context_manager(self):
         with PriorityQueue() as pq:
             pq.push(1)
@@ -102,7 +121,7 @@ class TestPriorityQueue(unittest.TestCase):
 
     def test_from_pairs(self):
         pairs = [("task1", 2), ("task2", 1), ("task3", 3)]
-        pq = PriorityQueue.from_pairs(pairs)
+        pq = PriorityQueue.from_items_with_priority(pairs)
         self.assertEqual([x for x in pq.pop_all()], ["task2", "task1", "task3"])
 
     def test_merge(self):
