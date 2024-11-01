@@ -61,6 +61,7 @@ print(task_queue.peek())  # Output: "Important task"
 ## Advanced Usage Examples
 
 ### Context Manager (with statement)
+
 ```python
 from simpledsa import PriorityQueue
 
@@ -79,6 +80,7 @@ with PriorityQueue() as pq:
 ```
 
 ### Batch Operations
+
 ```python
 # Add multiple items at once
 pq = PriorityQueue()
@@ -93,6 +95,7 @@ pq = PriorityQueue.from_pairs([("task1", 1), ("task2", 2)])
 ```
 
 ### Iteration
+
 ```python
 # Non-destructive iteration (keeps items in queue)
 pq = PriorityQueue.from_items([3, 1, 4, 1, 5])
@@ -105,6 +108,7 @@ for item in pq.pop_all():
 ```
 
 ### Queue Merging
+
 ```python
 # Merge multiple queues
 pq1 = PriorityQueue.from_items([1, 3, 5])
@@ -113,6 +117,7 @@ merged = PriorityQueue.merge([pq1, pq2])
 ```
 
 ### Priority Functions
+
 ```python
 from simpledsa import PriorityQueue, priority_functions
 
@@ -189,6 +194,7 @@ The documentation will be available in `docs/_build/html`.
 
 1. Update version in pyproject.toml
 2. Create and push a new tag:
+
 ```bash
 git tag v0.1.1
 git push origin v0.1.1
