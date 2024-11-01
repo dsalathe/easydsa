@@ -13,13 +13,14 @@ build:
     post_install:
       # Install dependencies with poetry
       - poetry install --with docs
+      # Ensure specific packages are installed
+      - pip install sphinx-rtd-theme myst-parser
 
 sphinx:
   configuration: docs/conf.py
 
+# Keep pip requirements in sync
 python:
-  install:
-    - method: pip
-      path: .
-      extra_requirements:
-        - docs
+   install:
+     - method: pip
+       path: .
