@@ -1,4 +1,4 @@
-# EasyDSA
+# SimpleDSA
 
 A simple and intuitive implementation of common data structures and algorithms in Python.
 
@@ -11,7 +11,7 @@ A simple and intuitive implementation of common data structures and algorithms i
 ## Installation
 
 ```bash
-pip install easydsa
+pip install simpledsa
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ pip install easydsa
 ### Priority Queue
 
 ```python
-from easydsa import PriorityQueue
+from simpledsa import PriorityQueue
 
 # Create a min-heap priority queue (smaller values have higher priority)
 pq = PriorityQueue()
@@ -61,7 +61,7 @@ print(task_queue.peek())  # Output: "Important task"
 
 ### Context Manager (with statement)
 ```python
-from easydsa import PriorityQueue
+from simpledsa import PriorityQueue
 
 # Queue is automatically cleared when exiting the with block
 with PriorityQueue() as pq:
@@ -113,7 +113,7 @@ merged = PriorityQueue.merge([pq1, pq2])
 
 ### Priority Functions
 ```python
-from easydsa import PriorityQueue, priority_functions
+from simpledsa import PriorityQueue, priority_functions
 
 # Max heap (larger values have higher priority)
 max_pq = PriorityQueue(priority_functions.reverse)

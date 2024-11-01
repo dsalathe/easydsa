@@ -1,5 +1,5 @@
 import unittest
-from easydsa import PriorityQueue, priority_functions
+from simpledsa import PriorityQueue, priority_functions
 
 class TestPriorityQueue(unittest.TestCase):
     def setUp(self):
