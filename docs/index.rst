@@ -29,8 +29,9 @@ Quick Start
    pq = PriorityQueue()
 
    # Add items
+   pq.push(2)
    pq.extend([3, 1, 4])
 
    # Process items in priority order
    while pq:
-       print(pq.pop())  # prints: 1, 3, 4
+       print(pq.pop())  # prints: 1, 2, 3, 4

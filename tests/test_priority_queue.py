@@ -130,6 +130,17 @@ class TestPriorityQueue(unittest.TestCase):
         merged = PriorityQueue.merge([pq1, pq2])
         self.assertEqual([x for x in merged.pop_all()], [1, 2, 3, 4])
 
+    def test_merge_with_empty(self):
+        merged = PriorityQueue.merge([])
+        self.assertEqual(merged._heap, PriorityQueue()._heap)
+
+    def test_merge_different_priority(self):
+        pq1 = PriorityQueue(lambda x: -x)
+        pq1.extend([1, 3])
+        pq2 = PriorityQueue.from_items([2, 4])
+        with self.assertRaises(ValueError):
+            PriorityQueue.merge([pq1, pq2])
+
     def test_priority_functions(self):
         # Test reverse (max heap)
         pq = PriorityQueue(priority_functions.reverse)
