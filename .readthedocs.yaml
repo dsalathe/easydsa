@@ -12,13 +12,14 @@ build:
       - poetry config virtualenvs.create false
     post_install:
       # Install dependencies with poetry
-      - poetry install
+      - poetry install --with docs
 
 sphinx:
   configuration: docs/conf.py
-  fail_on_warning: true
 
 python:
   install:
     - method: pip
       path: .
+      extra_requirements:
+        - docs

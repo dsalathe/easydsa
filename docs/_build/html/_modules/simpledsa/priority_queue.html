@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>simpledsa.priority_queue &mdash; SimpleDSA 0.1.0 documentation</title>
+  <title>simpledsa.priority_queue &mdash; SimpleDSA 0.2.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -12,7 +12,7 @@
 
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=2389946f"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b1f64a84"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -41,9 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Usage Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -82,7 +82,6 @@
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Tuple</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
     <span class="n">cast</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -90,7 +89,7 @@
 <span class="n">P</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="PriorityQueue"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue">[docs]</a><span class="k">class</span> <span class="nc">PriorityQueue</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]):</span>
+<div class="viewcode-block" id="PriorityQueue"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue">[docs]</a><span class="k">class</span> <span class="nc">PriorityQueue</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A flexible Priority Queue implementation supporting both min-heap and max-heap behavior.</span>
 
@@ -108,7 +107,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Used for stable sorting when priorities are equal</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_key_func</span> <span class="o">=</span> <span class="n">key_func</span>
 
-<div class="viewcode-block" id="PriorityQueue.push"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.push">[docs]</a>    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.push"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.push">[docs]</a>    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add an item to the priority queue.</span>
 
@@ -122,13 +121,13 @@
         <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">,</span> <span class="p">(</span><span class="n">transformed_priority</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.extend"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.extend">[docs]</a>    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.extend"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.extend">[docs]</a>    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add multiple items to the queue, using each item as its own priority.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            items: Sequence of items to add</span>
-<span class="sd">            </span>
+
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; pq = PriorityQueue()</span>
 <span class="sd">            &gt;&gt;&gt; pq.extend([3, 1, 4])</span>
@@ -138,13 +137,13 @@
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.extend_with_priority"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.extend_with_priority">[docs]</a>    <span class="k">def</span> <span class="nf">extend_with_priority</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.extend_with_priority"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.extend_with_priority">[docs]</a>    <span class="k">def</span> <span class="nf">extend_with_priority</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add multiple items with explicit priorities to the queue.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            items: Sequence of (item, priority) tuples</span>
-<span class="sd">            </span>
+
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; pq = PriorityQueue()</span>
 <span class="sd">            &gt;&gt;&gt; pq.extend_with_priority([(&quot;task1&quot;, 2), (&quot;task2&quot;, 1)])</span>
@@ -154,7 +153,7 @@
         <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">priority</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">priority</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.pop"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.pop"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Remove and return the highest priority item.</span>
 
@@ -168,7 +167,7 @@
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;pop from an empty priority queue&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.peek"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.peek">[docs]</a>    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.peek"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.peek">[docs]</a>    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the highest priority item without removing it.</span>
 
@@ -182,28 +181,28 @@
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;peek at an empty priority queue&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.is_empty"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="PriorityQueue.is_empty"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the priority queue is empty.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.__len__"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of items in the queue.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PriorityQueue.__bool__"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.__bool__">[docs]</a>    <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the queue is not empty.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PriorityQueue.__iter__"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Iterate through items in priority order without removing them.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Iterator yielding items in priority order</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="n">item</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="n">item</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="p">))</span>
 
-<div class="viewcode-block" id="PriorityQueue.pop_all"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.pop_all">[docs]</a>    <span class="k">def</span> <span class="nf">pop_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<div class="viewcode-block" id="PriorityQueue.pop_all"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.pop_all">[docs]</a>    <span class="k">def</span> <span class="nf">pop_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Iterate through and remove all items in priority order.</span>
 
@@ -213,16 +212,16 @@
         <span class="k">while</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.__enter__"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.__enter__">[docs]</a>    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Enter the context manager.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
+        <span class="k">return</span> <span class="bp">self</span>
 
-<div class="viewcode-block" id="PriorityQueue.__exit__"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.__exit__">[docs]</a>    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exit the context manager, clearing the queue.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_heap</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="PriorityQueue.from_items"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.from_items">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="PriorityQueue.from_items"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.from_items">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_items</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">key_func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">:</span>
@@ -240,7 +239,7 @@
         <span class="n">pq</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pq</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.from_items_with_priority"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.from_items_with_priority">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="PriorityQueue.from_items_with_priority"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.from_items_with_priority">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_items_with_priority</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">pairs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]],</span> <span class="n">key_func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">:</span>
@@ -258,7 +257,7 @@
         <span class="n">pq</span><span class="o">.</span><span class="n">extend_with_priority</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pq</span></div>
 
-<div class="viewcode-block" id="PriorityQueue.merge"><a class="viewcode-back" href="../../api/index.html#simpledsa.priority_queue.PriorityQueue.merge">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="PriorityQueue.merge"><a class="viewcode-back" href="../../api.html#simpledsa.priority_queue.PriorityQueue.merge">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;PriorityQueue[T, P]&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Merge multiple PriorityQueues into a new one.</span>
