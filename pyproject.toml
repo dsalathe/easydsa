@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "simpledsa"
-version = "0.2.0"
+version = "0.2.1"
 description = "A simple and intuitive implementation of data structures and algorithms"
 authors = ["David Salathé <salathe.david@gmail.com>"]
 license = "MIT"

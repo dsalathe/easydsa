@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1] - 2024-11-03
+
+### Changed
+
+- Updated documentation to use from_items_with_priority instead of from_pairs
+- Improved example clarity in documentation
+
 ## [0.2.0] - 2024-11-01
 
 ### Changed
