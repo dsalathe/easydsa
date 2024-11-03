@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.0] - 2024-01-XX
+## [0.2.0] - 2024-11-01
 
 ### Changed
 
@@ -13,7 +13,7 @@
 
 - Clarified API to prevent confusion about priority handling
 
-## [0.1.0] - 2024-01-XX
+## [0.1.0] - 2024-11-01
 
 ### Added
 

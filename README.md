@@ -91,7 +91,7 @@ pq.extend([("task1", 1), ("task2", 2)])  # For (item, priority) pairs
 pq = PriorityQueue.from_items([1, 2, 3])
 
 # Create queue from (item, priority) pairs
-pq = PriorityQueue.from_pairs([("task1", 1), ("task2", 2)])
+pq = PriorityQueue.from_items_with_priority([("task1", 1), ("task2", 2)])
 ```
 
 ### Iteration
