@@ -108,7 +108,7 @@ class PriorityQueue(Generic[T, P]):
             raise IndexError("pop from an empty priority queue")
         key, _, root = heapq.heappop(self._heap)
         return root, key
-    
+
     def peek(self) -> T:
         """
         Return the highest priority item without removing it.
@@ -162,7 +162,7 @@ class PriorityQueue(Generic[T, P]):
     def __str__(self) -> str:
         """Return the string representation of the list of items in priority order."""
         return str(list(self.__iter__()))
-    
+
     def pop_all(self) -> Iterator[T]:
         """
         Iterate through and remove all items in priority order.
