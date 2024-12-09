@@ -185,3 +185,23 @@ class TestPriorityQueue(unittest.TestCase):
         self.assertEqual(
             [x for x in pq.pop_all_with_priority()], sorted(pairs, key=lambda x: x[1])
         )
+
+    def test_pop_empty_queue_raises_index_error(self):
+        """Test that popping from an empty queue raises IndexError."""
+        with self.assertRaises(IndexError, msg="pop from an empty priority queue"):
+            self.pq.pop()
+
+    def test_peek_empty_queue_raises_index_error(self):
+        """Test that peeking at an empty queue raises IndexError."""
+        with self.assertRaises(IndexError, msg="peek from an empty priority queue"):
+            self.pq.peek()
+
+    def test_pop_with_priority_empty_queue_raises_index_error(self):
+        """Test that popping from an empty queue raises IndexError."""
+        with self.assertRaises(IndexError, msg="pop from an empty priority queue"):
+            self.pq.pop()
+
+    def test_peek_with_priority_empty_queue_raises_index_error(self):
+        """Test that peeking at an empty queue raises IndexError."""
+        with self.assertRaises(IndexError, msg="peek from an empty priority queue"):
+            self.pq.peek()
