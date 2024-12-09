@@ -199,9 +199,9 @@ class TestPriorityQueue(unittest.TestCase):
     def test_pop_with_priority_empty_queue_raises_index_error(self):
         """Test that popping from an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="pop from an empty priority queue"):
-            self.pq.pop()
+            self.pq.pop_with_priority()
 
     def test_peek_with_priority_empty_queue_raises_index_error(self):
         """Test that peeking at an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="peek from an empty priority queue"):
-            self.pq.peek()
+            self.pq.peek_with_priority()
