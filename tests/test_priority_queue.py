@@ -187,21 +187,28 @@ class TestPriorityQueue(unittest.TestCase):
         )
 
     def test_pop_empty_queue_raises_index_error(self):
-        """Test that popping from an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="pop from an empty priority queue"):
             self.pq.pop()
 
     def test_peek_empty_queue_raises_index_error(self):
-        """Test that peeking at an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="peek from an empty priority queue"):
             self.pq.peek()
 
     def test_pop_with_priority_empty_queue_raises_index_error(self):
-        """Test that popping from an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="pop from an empty priority queue"):
             self.pq.pop_with_priority()
 
     def test_peek_with_priority_empty_queue_raises_index_error(self):
-        """Test that peeking at an empty queue raises IndexError."""
         with self.assertRaises(IndexError, msg="peek from an empty priority queue"):
             self.pq.peek_with_priority()
+
+    def test_string_representation(self):
+        pq = PriorityQueue()
+        items = [("B", 3), ("A", 1), ("C", 4)]
+        pq.extend_with_priority(items)
+
+        expected_representation = "['A', 'B', 'C']"
+        self.assertEqual(str(pq), expected_representation)
+
+        empty_pq = PriorityQueue()
+        self.assertEqual(str(empty_pq), "[]")
