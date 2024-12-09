@@ -80,7 +80,7 @@ class PriorityQueue(Generic[T, P]):
         for item, priority in items:
             self.push(item, priority)
 
-    def pop(self, get_key: bool = False) -> T | tuple[T, P]:
+    def pop(self) -> T:
         """
         Remove and return the highest priority item.
 
@@ -92,13 +92,38 @@ class PriorityQueue(Generic[T, P]):
         """
         if self.is_empty():
             raise IndexError("pop from an empty priority queue")
+        return heapq.heappop(self._heap)[2]
 
+    def pop_with_priority(self) -> tuple[T, P]:
+        """
+        Remove and return the highest priority item and its priority.
+
+        Returns:
+            The item with the highest priority and its priority
+
+        Raises:
+            IndexError: If the queue is empty
+        """
+        if self.is_empty():
+            raise IndexError("pop from an empty priority queue")
         key, _, root = heapq.heappop(self._heap)
-        if get_key:
-            return root, key
-        return root
+        return root, key
+    
+    def peek(self) -> T:
+        """
+        Return the highest priority item without removing it.
 
-    def peek(self, get_key: bool = False) -> T | tuple[T, P]:
+        Returns:
+            The item with the highest priority
+
+        Raises:
+            IndexError: If the queue is empty
+        """
+        if self.is_empty():
+            raise IndexError("peek at an empty priority queue")
+        return self._heap[0][2]
+
+    def peek_with_priority(self) -> tuple[T, P]:
         """
         Return the highest priority item without removing it.
 
@@ -111,9 +136,7 @@ class PriorityQueue(Generic[T, P]):
         if self.is_empty():
             raise IndexError("peek at an empty priority queue")
         key, _, root = self._heap[0]
-        if get_key:
-            return root, key
-        return root
+        return root, key
 
     def is_empty(self) -> bool:
         """Check if the priority queue is empty."""
@@ -139,8 +162,8 @@ class PriorityQueue(Generic[T, P]):
     def __str__(self) -> str:
         """Return the string representation of the list of items in priority order."""
         return str(list(self.__iter__()))
-
-    def pop_all(self, get_key: bool = False) -> Iterator[T] | Iterator[tuple[T, P]]:
+    
+    def pop_all(self) -> Iterator[T]:
         """
         Iterate through and remove all items in priority order.
 
@@ -148,7 +171,17 @@ class PriorityQueue(Generic[T, P]):
             Iterator yielding items in priority order
         """
         while self:
-            yield self.pop(get_key)
+            yield self.pop()
+
+    def pop_all_with_priority(self) -> Iterator[tuple[T, P]]:
+        """
+        Iterate through and remove all items in priority order.
+
+        Returns:
+            Iterator yielding items in priority order
+        """
+        while self:
+            yield self.pop_with_priority()
 
     def __enter__(self) -> "PriorityQueue[T, P]":
         """Enter the context manager."""
